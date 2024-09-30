@@ -330,12 +330,12 @@ this is incorrect, setq slite--last-command-p to nil"))
     (slite--sl*-compile-defun))))
 
 ;; FIXME Should _these arguments really be disregarded?
-(defun slite--compilation-finished (successp _notes _buffer _loadp)
+(defun slite--compilation-finished (_notes)
   "Callback for a CL compilation."
   (let ((last-command-p slite--last-command-p))
     (setq buffer-read-only slite--last-read-only-mode)
     (setq slite--last-command-p nil)
-    (when (and successp last-command-p)
+    (when last-command-p
       (call-interactively 'slite-run))))
 
 (defun slite-delete-test ()
