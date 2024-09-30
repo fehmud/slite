@@ -119,7 +119,7 @@ state, so let's get rid of it early"
 
 
 (defun on-pass (results &key shell)
-  (when (every #'test-result-result-success-p results)
+  (when (every #'test-result-success-p results)
     (uiop:run-program (list "bash" "-c" shell)
                       :output *standard-output*
                       :error-output *error-output*))
