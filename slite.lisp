@@ -64,7 +64,14 @@ state, so let's get rid of it early"
     (atom t)
     (list
      (mapc #'ensure-safe-for-sl* x))
-    (t
+    (t 
+      ; *SBCL says that this code is unreachable*
+      ; in: DEFUN ENSURE-SAFE-FOR-SL*
+      ;     (ERROR "Unsafe object for SL* wire: ~S" SLITE::X)
+      ; 
+      ; note: deleting unreachable code
+      ; 
+      ; note: deleting unreachable code
      (error "Unsafe object for SL* wire: ~S" x)))
   x)
 
